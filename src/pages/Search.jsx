@@ -1,5 +1,11 @@
 import React from 'react';
+import Videos from '../components/Videos';
 
 export default function Search() {
-  return <div>Search</div>;
+  return (
+    <div>
+      Search
+      <Videos />
+    </div>
+  );
 }

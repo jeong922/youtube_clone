@@ -14,6 +14,9 @@ module.exports = {
         2: '2px',
         3: '3px',
       },
+      fontFamily: {
+        logoFont: ['Oswald', 'sans-serif'],
+      },
     },
   },
   plugins: [],

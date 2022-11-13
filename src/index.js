@@ -16,7 +16,7 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
     children: [
       { index: true, element: <Home /> },
-      { path: 'result', element: <Search /> },
+      { path: 'result/:keyword', element: <Search /> },
       { path: 'watch/:id', element: <VideoDetail /> },
     ],
   },
