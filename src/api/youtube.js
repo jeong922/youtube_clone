@@ -1,0 +1,34 @@
+export default class Youtube {
+  constructor(apiClient) {
+    this.apiClient = apiClient;
+  }
+
+  async mostPopular() {
+    const response = await this.apiClient.mostPopular({
+      params: {
+        part: 'snippet',
+        chart: 'mostPopular',
+        maxResults: 25,
+        regionCode: 'kr',
+      },
+    });
+    return response.data.items;
+  }
+
+  async search(keyword) {
+    const response = await this.apiClient.search({
+      params: { part: 'snippet', maxResults: 25, type: 'video', q: keyword },
+    });
+    return response.data.items.map((item) => ({
+      ...item,
+      id: item.id.videoId,
+    }));
+  }
+
+  async channelInfo(channelId) {
+    const response = await this.apiClient.channelInfo({
+      params: { part: 'snippet', id: channelId },
+    });
+    return response.data.items[0].snippet.thumbnails.default.url;
+  }
+}
