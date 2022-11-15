@@ -11,8 +11,8 @@ export default function Search() {
     youtube.search(keyword)
   );
   return (
-    <div className='p-6'>
-      <Videos isLoading={isLoading} error={error} data={data} />
+    <div className='w-5/6 max-w-6xl pt-20 mx-auto'>
+      <Videos isLoading={isLoading} error={error} data={data} from='search' />
     </div>
   );
 }

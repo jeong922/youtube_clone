@@ -31,4 +31,19 @@ export default class Youtube {
     });
     return response.data.items[0].snippet.thumbnails.default.url;
   }
+
+  async relatedVideo(videoId) {
+    const response = await this.apiClient.relatedVideo({
+      params: {
+        part: 'snippet',
+        maxResults: 25,
+        relatedToVideoId: videoId,
+        type: 'video',
+      },
+    });
+    return response.data.items.map((item) => ({
+      ...item,
+      id: item.id.videoId,
+    }));
+  }
 }

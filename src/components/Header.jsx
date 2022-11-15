@@ -21,7 +21,7 @@ export default function Header() {
   }, [keyword]);
 
   return (
-    <header className='w-full flex p-4 justify-between items-center'>
+    <header className='w-full fixed z-10 bg-white flex p-4 justify-between items-center'>
       <div className='flex'>
         <button className='w-10 h-10 flex justify-center rounded-full items-center hover:bg-lightGray'>
           <AiOutlineMenu className='text-xl' />

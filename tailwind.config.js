@@ -7,6 +7,7 @@ module.exports = {
         logo: '#FF0000',
         search: '#f8f8f8',
         lightGray: '#e2e2e2',
+        tag: '#3ea6ff',
       },
       borderWidth: {
         DEFAULT: '1px',
@@ -19,5 +20,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/line-clamp')],
 };
