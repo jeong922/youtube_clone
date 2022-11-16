@@ -13,9 +13,9 @@ export default function Video({ video, from }) {
         from === 'search'
           ? 'flex flex-col sm:flex-col md:flex-col lg:flex-row'
           : ''
-      }`}
+      } cursor-pointer`}
       onClick={() => {
-        navigate(`watch/${video.id}`, { state: video });
+        navigate(`watch?v=${video.id}`, { state: video });
       }}
     >
       <img
