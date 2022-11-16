@@ -26,7 +26,7 @@ export default function VideoDetail() {
       {isLoading && <Loading />}
       {error && <Error />}
       {data && (
-        <div className='flex flex-col p-10 pt-20 mx-auto max-w-fit sm:flex-col md:flex-col lg:flex-row'>
+        <div className='flex flex-col w-full p-10 pt-20 mx-auto max-w-fit sm:flex-col md:flex-col lg:flex-row'>
           <section className='flex flex-col w-full max-w-screen-xl pb-5 mr-4'>
             <iframe
               className='w-full pb-4 aspect-video'
@@ -39,12 +39,15 @@ export default function VideoDetail() {
             ></iframe>
             <div>
               <div>
-                {data.snippet.tags.slice(0, 6).map((tag) => (
-                  <span
-                    className='text-sm text-tag'
-                    key={tag}
-                  >{`#${tag}`}</span>
-                ))}
+                {data.snippet.tags &&
+                  data.snippet.tags
+                    .slice(0, 6)
+                    .map((tag) => (
+                      <span
+                        className='text-sm text-tag'
+                        key={tag}
+                      >{`#${tag}`}</span>
+                    ))}
               </div>
               <h2 className='mb-3 text-xl font-semibold'>
                 {data.snippet.title}
