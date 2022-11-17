@@ -3,22 +3,20 @@ import { useQuery } from '@tanstack/react-query';
 import { useYoutubeApi } from '../context/YoutubeApiContext';
 import { formatAgo } from '../util/date';
 import { useNavigate } from 'react-router-dom';
-import Loading from './Loading';
 
 export default function RelatedVideo({ id }) {
   const navigate = useNavigate();
   const { youtube } = useYoutubeApi();
-  const { isLoading, Error, data } = useQuery(['relatedVideo', id], () =>
-    youtube.relatedVideo(id)
+  const { data } = useQuery(
+    ['relatedVideo', id],
+    () => youtube.relatedVideo(id),
+    { staleTime: 1000 * 60 * 1 }
   );
-
-  console.log(data);
   return (
     <>
-      {isLoading && <Loading />}
       {data && (
         <>
-          <h2 className='inline-block px-3 py-2 mb-2 rounded-lg bg-lightGray'>
+          <h2 className='inline-block px-3 py-2 mb-2 rounded-lg bg-lightGray dark:bg-darkModeGray'>
             관련된 콘텐츠
           </h2>
           {data &&
@@ -27,7 +25,7 @@ export default function RelatedVideo({ id }) {
                 onClick={() =>
                   navigate(`/watch?v=${video.id}`, { state: video })
                 }
-                className='flex h-24 mb-1 cursor-pointer'
+                className='flex h-24 mb-2 cursor-pointer'
                 key={video.id}
               >
                 <img

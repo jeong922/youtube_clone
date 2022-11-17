@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: ['./src/**/*.{js,jsx}'],
   theme: {
     extend: {
@@ -7,7 +8,9 @@ module.exports = {
         logo: '#FF0000',
         search: '#f8f8f8',
         lightGray: '#e2e2e2',
+        darkModeGray: '#ffffff14',
         tag: '#3ea6ff',
+        bgBlack: '#0f0f0f',
       },
       borderWidth: {
         DEFAULT: '1px',

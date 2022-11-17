@@ -21,9 +21,9 @@ export default function Header() {
   }, [keyword]);
 
   return (
-    <header className='w-full fixed z-10 bg-white flex p-4 justify-between items-center'>
+    <header className='fixed z-10 flex items-center justify-between w-full p-4 text-black bg-white dark:bg-bgBlack dark:text-white'>
       <div className='flex'>
-        <button className='w-10 h-10 flex justify-center rounded-full items-center hover:bg-lightGray'>
+        <button className='flex items-center justify-center w-10 h-10 rounded-full hover:bg-lightGray dark:hover:bg-darkModeGray'>
           <AiOutlineMenu className='text-xl' />
         </button>
         <Link
@@ -36,16 +36,16 @@ export default function Header() {
         </Link>
       </div>
 
-      <form className='w-full flex justify-center' onSubmit={handleSubmit}>
+      <form className='flex justify-center w-full' onSubmit={handleSubmit}>
         <input
-          className='w-7/12 max-w-md p-2 pl-3 text-gray-500 outline-none border-solid border border-r-0 border-gray-400 rounded-l-3xl'
+          className='w-7/12 max-w-md p-2 pl-3 text-gray-600 bg-transparent border border-r-0 border-gray-400 border-solid outline-none rounded-l-3xl dark:text-white dark:opacity-50'
           type='text'
           placeholder='검색'
           value={value}
           onChange={handleChange}
         />
-        <button className='w-16 flex justify-center items-center bg-search border-solid border border-gray-400 rounded-r-3xl hover:bg-lightGray'>
-          <AiOutlineSearch className='text-2xl' />
+        <button className='flex items-center justify-center w-16 border border-gray-400 border-solid dark:opacity-50 dark:bg-darkModeGray bg-search rounded-r-3xl hover:bg-lightGray'>
+          <AiOutlineSearch className='text-2xl text-zinc-600 dark:text-zinc-400' />
         </button>
       </form>
 

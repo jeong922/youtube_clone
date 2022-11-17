@@ -12,7 +12,7 @@ export default function ChannelInfo({ id }) {
     <>
       {data && (
         <img
-          className='w-10 h-10 mr-2 rounded-full bg-lightGray'
+          className='w-full h-full rounded-full bg-lightGray'
           src={data}
           alt=''
         />

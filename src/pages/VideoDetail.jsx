@@ -8,11 +8,8 @@ import Loading from '../components/Loading';
 import Error from '../components/Error';
 
 export default function VideoDetail() {
-  // const { state } = useLocation();
   const location = useLocation();
   const id = new URLSearchParams(location.search).get('v');
-  console.log(id);
-  // let id = state.id;
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
@@ -20,16 +17,16 @@ export default function VideoDetail() {
   const { isLoading, error, data } = useQuery(['detail', id], () =>
     youtube.detail(id)
   );
-  console.log(data);
+
   return (
     <>
       {isLoading && <Loading />}
       {error && <Error />}
       {data && (
-        <div className='flex flex-col w-full p-10 pt-20 mx-auto max-w-fit sm:flex-col md:flex-col lg:flex-row'>
-          <section className='flex flex-col w-full max-w-screen-xl pb-5 mr-4'>
+        <div className='flex flex-col w-full p-10 pt-20 mx-auto max-w-[120rem] sm:flex-col md:flex-col lg:flex-row'>
+          <section className='top-0 left-0 flex flex-col w-full max-w-screen-xl pb-5 mr-4'>
             <iframe
-              className='w-full pb-4 aspect-video'
+              className='w-full aspect-video'
               type='text/html'
               src={`https://www.youtube.com/embed/${data.id}?autoplay=1&mute=0`}
               title='youtube video player'
@@ -37,7 +34,7 @@ export default function VideoDetail() {
               allowFullScreen
               allow='autoplay'
             ></iframe>
-            <div>
+            <div className='mt-3'>
               <div>
                 {data.snippet.tags &&
                   data.snippet.tags
@@ -53,16 +50,18 @@ export default function VideoDetail() {
                 {data.snippet.title}
               </h2>
               <div className='flex items-center mb-3'>
-                <ChannelInfo id={data.snippet.channelId} />
+                <div className='mr-2 w-9 h-9'>
+                  <ChannelInfo id={data.snippet.channelId} />
+                </div>
                 <span className='font-semibold'>
                   {data.snippet.channelTitle}
                 </span>
               </div>
-              <div className='p-3 rounded-lg bg-lightGray'>
+              <div className='p-3 rounded-lg bg-lightGray dark:bg-darkModeGray'>
                 <span className='font-semibold'>
                   {data.snippet.publishedAt.slice(0, 10).replaceAll('-', '.')}
                 </span>
-                <pre className='mt-4 text-sm whitespace-pre-wrap'>
+                <pre className='text-sm whitespace-pre-wrap'>
                   {data.snippet.description}
                 </pre>
               </div>
