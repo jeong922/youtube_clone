@@ -3,9 +3,9 @@ import { Outlet } from 'react-router-dom';
 import Header from './components/Header';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { YoutubeApiProvider } from './context/YoutubeApiContext';
-import { DarkModeProvider, useDarkMode } from './context/DarkModeContext';
+import { DarkModeProvider } from './context/DarkModeContext';
 import ModeButton from './components/ModeButton';
-import SideBar from './components/SideBar';
+import Sidebar from './components/Sidebar';
 
 const queryClient = new QueryClient();
 
@@ -16,7 +16,7 @@ function App() {
         <div className='bg-white dark:bg-bgBlack dark:text-white '>
           <Header />
           <div className='flex'>
-            <SideBar />
+            <Sidebar />
             <YoutubeApiProvider>
               <QueryClientProvider client={queryClient}>
                 <Outlet />

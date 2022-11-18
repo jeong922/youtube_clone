@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { AiFillYoutube, AiOutlineSearch, AiOutlineMenu } from 'react-icons/ai';
 import { Link, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import SideBar from './SideBar';
 
 export default function Header() {
   const { keyword } = useParams();

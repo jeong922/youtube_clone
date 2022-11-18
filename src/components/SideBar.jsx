@@ -4,17 +4,19 @@ import { MdOutlineSubscriptions } from 'react-icons/md';
 import { HiDownload } from 'react-icons/hi';
 import { Link, useLocation } from 'react-router-dom';
 
-export default function SideBar() {
+export default function Sidebar() {
   const location = useLocation();
   return (
     <>
       {location.pathname !== '/watch' && (
-        <section className='h-screen mt-[72px] w-20 bg-white z-10 dark:bg-bgBlack hidden sm:block lg:w-56'>
+        <section className='fixed h-screen mt-[72px] w-20 bg-white z-10 dark:bg-bgBlack hidden sm:block lg:w-56'>
           <ul className='flex flex-col p-2 text-lg'>
             <Link
               to='/'
               title='홈'
-              className='flex flex-col items-center justify-center px-3 mb-2 rounded-lg cursor-pointer lg:px-4 h-14 hover:bg-lightGray dark:hover:bg-darkModeGray lg:flex-row lg:justify-start'
+              className={`${
+                location.pathname === '/' && 'dark:bg-darkModeGray bg-lightGray'
+              } flex flex-col items-center justify-center px-3 mb-2 rounded-lg cursor-pointer lg:px-4 h-14 hover:bg-lightGray dark:hover:bg-darkModeGray lg:flex-row lg:justify-start`}
             >
               {location.pathname === '/' ? (
                 <AiFillHome className='lg:mr-2' />
