@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { YoutubeApiProvider } from './context/YoutubeApiContext';
 import { DarkModeProvider, useDarkMode } from './context/DarkModeContext';
 import ModeButton from './components/ModeButton';
+import SideBar from './components/SideBar';
 
 const queryClient = new QueryClient();
 
@@ -14,12 +15,15 @@ function App() {
       <DarkModeProvider>
         <div className='bg-white dark:bg-bgBlack dark:text-white '>
           <Header />
-          <YoutubeApiProvider>
-            <QueryClientProvider client={queryClient}>
-              <Outlet />
-            </QueryClientProvider>
-          </YoutubeApiProvider>
-          <ModeButton />
+          <div className='flex'>
+            <SideBar />
+            <YoutubeApiProvider>
+              <QueryClientProvider client={queryClient}>
+                <Outlet />
+              </QueryClientProvider>
+            </YoutubeApiProvider>
+            <ModeButton />
+          </div>
         </div>
       </DarkModeProvider>
     </>

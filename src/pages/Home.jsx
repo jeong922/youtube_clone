@@ -9,7 +9,7 @@ export default function Home() {
     youtube.mostPopular()
   );
   return (
-    <div className='w-5/6 mx-auto max-w-screen-2xl'>
+    <div className='w-5/6 mx-auto sm:px-2 max-w-screen-2xl'>
       <Videos isLoading={isLoading} error={error} data={data} from='home' />
     </div>
   );

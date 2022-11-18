@@ -20,13 +20,14 @@ export default function Video({ video, from }) {
         from === 'search' ? 'flex flex-col sm:flex-col md:flex-row' : ''
       } cursor-pointer`}
       onClick={() => {
-        navigate(`watch?v=${video.id}`);
+        navigate(`/watch?v=${video.id}`);
       }}
     >
       <img
         className={`${from === 'search' ? 'mr-3 mb-3' : 'w-full '} rounded-xl`}
         src={thumbnails.medium.url}
         alt={title}
+        // from !== 'search' ? thumbnails.maxres.url :
       />
       <div className='my-2'>
         {from !== 'search' ? (
