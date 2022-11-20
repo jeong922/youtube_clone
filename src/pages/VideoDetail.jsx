@@ -6,6 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useYoutubeApi } from '../context/YoutubeApiContext';
 import Loading from '../components/Loading';
 import Error from '../components/Error';
+import Comment from '../components/Comment';
 
 export default function VideoDetail() {
   const location = useLocation();
@@ -50,7 +51,7 @@ export default function VideoDetail() {
                 {data.snippet.title}
               </h2>
               <div className='flex items-center mb-3'>
-                <div className='mr-2 w-9 h-9'>
+                <div className='w-10 h-10 mr-2'>
                   <ChannelInfo id={data.snippet.channelId} />
                 </div>
                 <span className='font-semibold'>
@@ -66,7 +67,9 @@ export default function VideoDetail() {
                 </pre>
               </div>
             </div>
-            <div>댓글</div>
+            <div className='mt-4'>
+              <Comment id={id} />
+            </div>
           </section>
 
           <section className='md:w-full lg:w-2/5'>

@@ -27,4 +27,8 @@ export default class YoutubeClient {
   async relatedVideo(params) {
     return this.httpClient.get('search', params);
   }
+
+  async comment(params) {
+    return this.httpClient.get('commentThreads', params);
+  }
 }

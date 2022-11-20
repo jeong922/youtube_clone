@@ -13,7 +13,6 @@ export default function Video({ video, from }) {
     description,
   } = video.snippet;
   const navigate = useNavigate();
-  console.log(video);
   return (
     <li
       className={`${

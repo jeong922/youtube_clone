@@ -57,4 +57,16 @@ export default class Youtube {
       id: item.id.videoId,
     }));
   }
+
+  async comment(videoId) {
+    const response = await this.apiClient.comment({
+      params: {
+        part: 'snippet',
+        maxResults: 20,
+        order: 'relevance',
+        videoId: videoId,
+      },
+    });
+    return response.data.items;
+  }
 }

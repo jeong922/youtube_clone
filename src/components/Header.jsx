@@ -3,7 +3,7 @@ import { AiFillYoutube, AiOutlineSearch, AiOutlineMenu } from 'react-icons/ai';
 import { Link, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
-export default function Header() {
+export default function Header({ changeShow, show }) {
   const { keyword } = useParams();
   const navigate = useNavigate();
   const [value, setValue] = useState('');
@@ -24,7 +24,10 @@ export default function Header() {
     <>
       <header className='fixed z-10 flex items-center justify-between w-full p-4 text-black bg-white dark:bg-bgBlack dark:text-white h-[74px]'>
         <div className='flex'>
-          <button className='flex items-center justify-center w-10 h-10 rounded-full hover:bg-lightGray dark:hover:bg-darkModeGray'>
+          <button
+            onClick={() => changeShow()}
+            className='flex items-center justify-center w-10 h-10 rounded-full hover:bg-lightGray dark:hover:bg-darkModeGray'
+          >
             <AiOutlineMenu className='text-xl' />
           </button>
           <Link

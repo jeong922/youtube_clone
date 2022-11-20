@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AiFillHome, AiOutlineYoutube, AiOutlineHome } from 'react-icons/ai';
 import { MdOutlineSubscriptions } from 'react-icons/md';
 import { HiDownload } from 'react-icons/hi';
 import { Link, useLocation } from 'react-router-dom';
 
-export default function Sidebar() {
+export default function Sidebar({ show }) {
   const location = useLocation();
   return (
     <>
