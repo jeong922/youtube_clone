@@ -7,7 +7,6 @@ export default function ChannelInfo({ id }) {
   const { data } = useQuery(['channel', id], () => youtube.channelInfo(id), {
     staleTime: 1000 * 60 * 5,
   });
-
   return (
     <>
       {data && (

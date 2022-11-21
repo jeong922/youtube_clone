@@ -16,7 +16,9 @@ export default function Video({ video, from }) {
   return (
     <li
       className={`${
-        from === 'search' ? 'flex flex-col sm:flex-col md:flex-row' : ''
+        from === 'search'
+          ? 'flex flex-col sm:flex-col md:flex-row'
+          : 'px-2 pt-2 cursor-pointer hover:scale-110 duration-300 ease-in-out transform hover:z-20 hover:shadow-lg rounded-xl  dark:hover:bg-darkModeGray'
       } cursor-pointer`}
       onClick={() => {
         navigate(`/watch?v=${video.id}`);
@@ -26,7 +28,6 @@ export default function Video({ video, from }) {
         className={`${from === 'search' ? 'mr-3 mb-3' : 'w-full '} rounded-xl`}
         src={thumbnails.medium.url}
         alt={title}
-        // from !== 'search' ? thumbnails.maxres.url :
       />
       <div className='my-2'>
         {from !== 'search' ? (
