@@ -6,32 +6,26 @@ import { YoutubeApiProvider } from './context/YoutubeApiContext';
 import { DarkModeProvider } from './context/DarkModeContext';
 import ModeButton from './components/ModeButton';
 import Sidebar from './components/Sidebar';
-import { useState } from 'react';
-
+import { SidebarProvider, useSidebar } from './context/SidebarContext';
 const queryClient = new QueryClient();
 
 function App() {
-  const [show, setShow] = useState(false);
-
-  const changeShow = () => {
-    setShow((prev) => !prev);
-    console.log(show);
-  };
-
   return (
     <>
       <DarkModeProvider>
-        <div className='bg-white dark:bg-bgBlack dark:text-white '>
-          <Header changeShow={changeShow} show={show} />
-          <div className='flex'>
-            <Sidebar show={show} />
-            <YoutubeApiProvider>
-              <QueryClientProvider client={queryClient}>
-                <Outlet />
-              </QueryClientProvider>
-            </YoutubeApiProvider>
-            <ModeButton />
-          </div>
+        <div className='bg-white dark:bg-bgBlack dark:text-white'>
+          <SidebarProvider>
+            <Header />
+            <div className='flex'>
+              <Sidebar />
+              <YoutubeApiProvider>
+                <QueryClientProvider client={queryClient}>
+                  <Outlet />
+                </QueryClientProvider>
+              </YoutubeApiProvider>
+              <ModeButton />
+            </div>
+          </SidebarProvider>
         </div>
       </DarkModeProvider>
     </>

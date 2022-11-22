@@ -12,7 +12,6 @@ export default function Search() {
     () => youtube.search(keyword),
     { staleTime: 1000 * 60 * 1 }
   );
-  console.log(data);
   return (
     <div className='w-5/6 max-w-6xl pt-20 pb-5 mx-auto'>
       <Videos isLoading={isLoading} error={error} data={data} from='search' />

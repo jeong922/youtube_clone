@@ -7,6 +7,8 @@ export function formatAgo(date, lang = 'en_US') {
   return format(date, lang);
 }
 
+export const formatter = new Intl.NumberFormat('ko', { notation: 'compact' });
+
 export function replaceString(str) {
   if (str == null) {
     return '';

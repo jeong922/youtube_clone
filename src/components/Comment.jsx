@@ -1,13 +1,12 @@
 import React from 'react';
 import { useYoutubeApi } from '../context/YoutubeApiContext';
 import { useQuery } from '@tanstack/react-query';
-import { formatAgo } from '../util/date';
+import { formatAgo, formatter } from '../util/date';
 import { FiThumbsUp, FiThumbsDown } from 'react-icons/fi';
 
 export default function Comment({ id }) {
   const { youtube } = useYoutubeApi();
   const { data } = useQuery(['comment', id], () => youtube.comment(id));
-  console.log(data);
   return (
     <div>
       {data &&
@@ -32,9 +31,10 @@ export default function Comment({ id }) {
               <div className='flex items-center opacity-80'>
                 <span className='flex items-center mr-2 '>
                   <FiThumbsUp className='mr-1' />
-                  {item.snippet.topLevelComment.snippet.likeCount}
+                  {formatter.format(
+                    item.snippet.topLevelComment.snippet.likeCount
+                  )}
                 </span>
-
                 <FiThumbsDown />
               </div>
             </div>

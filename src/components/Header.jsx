@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { AiFillYoutube, AiOutlineSearch, AiOutlineMenu } from 'react-icons/ai';
 import { Link, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { useSidebar } from '../context/SidebarContext';
 
 export default function Header({ changeShow, show }) {
   const { keyword } = useParams();
   const navigate = useNavigate();
   const [value, setValue] = useState('');
+  const { showSidebar, toggleShowSidebar } = useSidebar();
   const handleSubmit = (e) => {
     e.preventDefault();
     navigate(`/result/${value}`);
@@ -25,7 +27,7 @@ export default function Header({ changeShow, show }) {
       <header className='fixed z-10 flex items-center justify-between w-full p-4 text-black bg-white dark:bg-bgBlack dark:text-white h-[74px]'>
         <div className='flex'>
           <button
-            onClick={() => changeShow()}
+            onClick={toggleShowSidebar}
             className='flex items-center justify-center w-10 h-10 rounded-full hover:bg-lightGray dark:hover:bg-darkModeGray'
           >
             <AiOutlineMenu className='text-xl' />

@@ -11,13 +11,14 @@ import Comment from '../components/Comment';
 export default function VideoDetail() {
   const location = useLocation();
   const id = new URLSearchParams(location.search).get('v');
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [id]);
   const { youtube } = useYoutubeApi();
   const { isLoading, error, data } = useQuery(['detail', id], () =>
     youtube.detail(id)
   );
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   return (
     <>
