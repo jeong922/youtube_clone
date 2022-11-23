@@ -10,11 +10,6 @@ export default function Home() {
     youtube.mostPopular()
   );
 
-  const { showSidebar, toggleShowSidebar } = useSidebar();
-  useEffect(() => {
-    toggleShowSidebar(!showSidebar);
-  }, []);
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

@@ -4,7 +4,7 @@ import { MdOutlineSubscriptions } from 'react-icons/md';
 import { HiDownload } from 'react-icons/hi';
 import { Link, useLocation } from 'react-router-dom';
 import { useSidebar } from '../context/SidebarContext';
-import { AiFillYoutube, AiOutlineSearch, AiOutlineMenu } from 'react-icons/ai';
+import { AiFillYoutube, AiOutlineMenu } from 'react-icons/ai';
 
 export default function Sidebar() {
   const location = useLocation();
@@ -20,7 +20,6 @@ export default function Sidebar() {
     };
   }, [scrollY]);
 
-  console.log(scrollY);
   useEffect(() => {
     if (showSidebar) {
       document.body.style.cssText = `
@@ -77,6 +76,7 @@ export default function Sidebar() {
                   location.pathname === '/' &&
                   'dark:bg-darkModeGray bg-lightGray'
                 } flex items-center mb-2 rounded-lg cursor-pointer px-4 h-14 hover:bg-lightGray dark:hover:bg-darkModeGray`}
+                onClick={toggleShowSidebar}
               >
                 {location.pathname === '/' ? (
                   <AiFillHome className='mr-2' />
