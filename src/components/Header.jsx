@@ -4,10 +4,11 @@ import { Link, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useSidebar } from '../context/SidebarContext';
 
-export default function Header({ changeShow, show }) {
+export default function Header() {
   const { keyword } = useParams();
   const navigate = useNavigate();
   const [value, setValue] = useState('');
+  const [show, setShow] = useState(false);
   const { showSidebar, toggleShowSidebar } = useSidebar();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,6 +22,16 @@ export default function Header({ changeShow, show }) {
   useEffect(() => {
     setValue(keyword || '');
   }, [keyword]);
+
+  // 640px
+
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      window.innerWidth > 768 ? setShow(false) : setShow(true);
+    });
+  }, []);
+
+  console.log(show);
 
   return (
     <>
@@ -42,20 +53,32 @@ export default function Header({ changeShow, show }) {
           </Link>
         </div>
 
-        <form className='flex justify-center w-full' onSubmit={handleSubmit}>
-          <input
-            className='w-7/12 max-w-md p-2 pl-3 text-gray-600 bg-transparent border border-r-0 border-gray-400 border-solid outline-none rounded-l-3xl dark:text-white dark:opacity-50'
-            type='text'
-            placeholder='검색'
-            value={value}
-            onChange={handleChange}
-          />
-          <button className='flex items-center justify-center w-16 border border-gray-400 border-solid dark:opacity-50 dark:bg-darkModeGray bg-search rounded-r-3xl hover:bg-lightGray'>
+        <div className='w-10/12'>
+          <form
+            className='justify-center hidden w-full sm:flex'
+            onSubmit={handleSubmit}
+          >
+            <input
+              className='w-7/12 max-w-md p-2 pl-3 text-gray-600 bg-transparent border border-r-0 border-gray-400 border-solid outline-none rounded-l-3xl dark:text-white dark:opacity-50'
+              type='text'
+              placeholder='검색'
+              value={value}
+              onChange={handleChange}
+            />
+            <button className='flex items-center justify-center w-16 border border-gray-400 border-solid dark:opacity-50 dark:bg-darkModeGray bg-search rounded-r-3xl hover:bg-lightGray'>
+              <AiOutlineSearch className='text-2xl text-zinc-600 dark:text-zinc-400' />
+            </button>
+          </form>
+        </div>
+
+        <div className='flex justify-end w-[130px]'>
+          <button
+            onClick={() => setShow(true)}
+            className='flex items-center justify-center w-8 h-8 rounded-full sm:hidden hover:bg-lightGray dark:hover:bg-darkModeGray'
+          >
             <AiOutlineSearch className='text-2xl text-zinc-600 dark:text-zinc-400' />
           </button>
-        </form>
 
-        <div className='flex justify-end'>
           <img
             src='https://avatars.githubusercontent.com/u/93126884?v=4'
             className='w-8 h-8 mx-3 rounded-full cursor-pointer'

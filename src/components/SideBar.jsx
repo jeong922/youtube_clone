@@ -34,7 +34,7 @@ export default function Sidebar() {
         window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
       };
     }
-  }, [showSidebar]);
+  }, [showSidebar, scrollY]);
 
   return (
     <>
