@@ -13,7 +13,7 @@ export default function Videos({ isLoading, error, data, from }) {
           className={`${
             from === 'search'
               ? 'flex flex-col'
-              : 'grid grid-cols-1 gap-2 pt-20 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-y-4'
+              : 'grid grid-cols-1 gap-2 pt-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-y-4'
           } lg:pl-36 sm:pl-7`}
         >
           {data.map((video) => (

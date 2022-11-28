@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import Videos from '../components/Videos';
 import { useQuery } from '@tanstack/react-query';
 import { useYoutubeApi } from '../context/YoutubeApiContext';
-import { useSidebar } from '../context/SidebarContext';
 
 export default function Home() {
   const { youtube } = useYoutubeApi();

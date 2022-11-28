@@ -6,7 +6,7 @@ import { YoutubeApiProvider } from './context/YoutubeApiContext';
 import { DarkModeProvider } from './context/DarkModeContext';
 import ModeButton from './components/ModeButton';
 import Sidebar from './components/Sidebar';
-import { SidebarProvider, useSidebar } from './context/SidebarContext';
+import { SidebarProvider } from './context/SidebarContext';
 const queryClient = new QueryClient();
 
 function App() {

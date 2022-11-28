@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { AiFillYoutube, AiOutlineSearch, AiOutlineMenu } from 'react-icons/ai';
+import {
+  AiFillYoutube,
+  AiOutlineSearch,
+  AiOutlineMenu,
+  AiOutlineArrowLeft,
+} from 'react-icons/ai';
 import { Link, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useSidebar } from '../context/SidebarContext';
@@ -9,7 +14,7 @@ export default function Header() {
   const navigate = useNavigate();
   const [value, setValue] = useState('');
   const [show, setShow] = useState(false);
-  const { showSidebar, toggleShowSidebar } = useSidebar();
+  const { toggleShowSidebar } = useSidebar();
   const handleSubmit = (e) => {
     e.preventDefault();
     navigate(`/result/${value}`);
@@ -27,7 +32,16 @@ export default function Header() {
 
   useEffect(() => {
     window.addEventListener('resize', () => {
-      window.innerWidth > 768 ? setShow(false) : setShow(true);
+      if (window.innerWidth > 640) {
+        setShow(false);
+      }
+      return () => {
+        window.removeEventListener('resize', () => {
+          if (window.innerWidth > 640) {
+            setShow(false);
+          }
+        });
+      };
     });
   }, []);
 
@@ -35,7 +49,7 @@ export default function Header() {
 
   return (
     <>
-      <header className='fixed z-10 flex items-center justify-between w-full p-4 text-black bg-white dark:bg-bgBlack dark:text-white h-[74px]'>
+      <header className='relative fixed z-10 flex items-center justify-between w-full p-4 text-black bg-white dark:bg-bgBlack dark:text-white h-[74px]'>
         <div className='flex'>
           <button
             onClick={toggleShowSidebar}
@@ -53,9 +67,27 @@ export default function Header() {
           </Link>
         </div>
 
-        <div className='w-10/12'>
+        <div
+          className={`${
+            show
+              ? 'w-[95%] absolute dark:bg-bgBlack bg-white'
+              : 'w-10/12 relative'
+          }  `}
+        >
+          <button
+            onClick={() => setShow(false)}
+            className={
+              show
+                ? 'absolute flex items-center justify-center w-10 h-10 rounded-full sm:hidden hover:bg-lightGray dark:hover:bg-darkModeGray'
+                : 'hidden'
+            }
+          >
+            <AiOutlineArrowLeft className='text-lg' />
+          </button>
           <form
-            className='justify-center hidden w-full sm:flex'
+            className={`${
+              show ? 'flex' : 'hidden'
+            } justify-center w-full sm:flex`}
             onSubmit={handleSubmit}
           >
             <input
