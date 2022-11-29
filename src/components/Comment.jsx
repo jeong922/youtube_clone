@@ -6,7 +6,9 @@ import { FiThumbsUp, FiThumbsDown } from 'react-icons/fi';
 
 export default function Comment({ id }) {
   const { youtube } = useYoutubeApi();
-  const { data } = useQuery(['comment', id], () => youtube.comment(id));
+  const { data } = useQuery(['comment', id], () => youtube.comment(id), {
+    staleTime: 1000 * 60 * 1,
+  });
   return (
     <div>
       {data &&

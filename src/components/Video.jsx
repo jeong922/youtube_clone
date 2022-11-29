@@ -3,7 +3,7 @@ import { formatAgo, replaceString } from '../util/date';
 import ChannelInfo from './ChannelInfo';
 import { useNavigate } from 'react-router-dom';
 
-export default function Video({ video, from }) {
+export default function Video({ video, type }) {
   const {
     thumbnails,
     title,
@@ -16,7 +16,7 @@ export default function Video({ video, from }) {
   return (
     <li
       className={`${
-        from === 'search'
+        type === 'list'
           ? 'flex flex-col sm:flex-col md:flex-row'
           : 'px-2 pt-2 cursor-pointer hover:scale-110 duration-300 ease-in-out transform hover:z-20 hover:shadow-lg rounded-xl  dark:hover:bg-darkModeGray'
       } cursor-pointer`}
@@ -25,12 +25,12 @@ export default function Video({ video, from }) {
       }}
     >
       <img
-        className={`${from === 'search' ? 'mr-3 mb-3' : 'w-full '} rounded-xl`}
+        className={`${type === 'list' ? 'mr-3 mb-3' : 'w-full '} rounded-xl`}
         src={thumbnails.medium.url}
         alt={title}
       />
       <div className='my-2'>
-        {from !== 'search' ? (
+        {type !== 'list' ? (
           <div className='flex justify-between'>
             <div className='mr-2 w-9 h-9'>
               {channelId && <ChannelInfo id={channelId} />}

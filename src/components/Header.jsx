@@ -28,8 +28,6 @@ export default function Header() {
     setValue(keyword || '');
   }, [keyword]);
 
-  // 640px
-
   useEffect(() => {
     window.addEventListener('resize', () => {
       if (window.innerWidth > 640) {
@@ -44,8 +42,6 @@ export default function Header() {
       };
     });
   }, []);
-
-  console.log(show);
 
   return (
     <>

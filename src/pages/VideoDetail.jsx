@@ -12,8 +12,10 @@ export default function VideoDetail() {
   const location = useLocation();
   const id = new URLSearchParams(location.search).get('v');
   const { youtube } = useYoutubeApi();
-  const { isLoading, error, data } = useQuery(['detail', id], () =>
-    youtube.detail(id)
+  const { isLoading, error, data } = useQuery(
+    ['detail', id],
+    () => youtube.detail(id),
+    { staleTime: 1000 * 60 * 1 }
   );
 
   useEffect(() => {
@@ -25,7 +27,7 @@ export default function VideoDetail() {
       {isLoading && <Loading />}
       {error && <Error />}
       {data && (
-        <div className='flex flex-col w-full p-10 pt-2 mx-auto max-w-[120rem] sm:flex-col md:flex-col lg:flex-row'>
+        <div className='flex flex-col w-full p-10 pt-20 mx-auto max-w-[120rem] sm:flex-col md:flex-col lg:flex-row'>
           <section className='top-0 left-0 flex flex-col w-full max-w-screen-xl pb-5 mr-4'>
             <iframe
               className='w-full aspect-video'
