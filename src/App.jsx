@@ -5,8 +5,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { YoutubeApiProvider } from './context/YoutubeApiContext';
 import { DarkModeProvider } from './context/DarkModeContext';
 import ModeButton from './components/ModeButton';
-import Sidebar from './components/Sidebar';
 import { SidebarProvider } from './context/SidebarContext';
+import Sidebar from './components/SideNav';
 const queryClient = new QueryClient();
 
 function App() {
