@@ -145,7 +145,7 @@ export default function Sidebar() {
 
       {location.pathname !== '/watch' && (
         <>
-          <section className='fixed z-10 hidden w-20 h-screen bg-white dark:bg-bgBlack sm:block lg:w-56 scrollbar-thin hover:overflow-y-auto'>
+          <section className='fixed z-10 hidden w-20 h-screen mt-[72px] bg-white dark:bg-bgBlack sm:block lg:w-56 scrollbar-thin hover:overflow-y-auto'>
             <ul className='flex flex-col p-2 text-lg'>
               <Link
                 to='/'
