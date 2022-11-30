@@ -34,7 +34,7 @@ export default function RelatedVideo({ id }) {
                   alt=''
                 />
                 <div className='flex flex-col'>
-                  <h3 className='mb-1 text-sm font-semibold line-clamp-2'>
+                  <h3 className='mb-1 text-sm font-semibold break-all line-clamp-2'>
                     {video.snippet.title}
                   </h3>
                   <span className='text-xs opacity-80'>

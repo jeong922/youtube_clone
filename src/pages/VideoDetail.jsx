@@ -50,7 +50,7 @@ export default function VideoDetail() {
                       >{`#${tag}`}</span>
                     ))}
               </div>
-              <h2 className='mb-3 text-xl font-semibold'>
+              <h2 className='mb-3 text-xl font-semibold break-all'>
                 {data.snippet.title}
               </h2>
               <div className='flex items-center mb-3'>
@@ -65,7 +65,7 @@ export default function VideoDetail() {
                 <span className='font-semibold'>
                   {data.snippet.publishedAt.slice(0, 10).replaceAll('-', '.')}
                 </span>
-                <pre className='text-sm whitespace-pre-wrap'>
+                <pre className='text-sm break-all whitespace-pre-wrap'>
                   {data.snippet.description}
                 </pre>
               </div>
