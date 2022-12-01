@@ -62,4 +62,4 @@ React 18, React Router, React Query , Tailwind, YouTube Data API, Axios 등 사�
 
 - [ ] 최적화 및 코드 정리
 - [ ] Infinite Queries로 스크롤이 일정 위치로 가면 유튜브 데이터를 더 불러오게 구현
-- [ ] NotFound 화면 디자인 수정
+- [x] NotFound 화면 수정
