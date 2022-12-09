@@ -14,7 +14,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className='w-5/6 pt-20 mx-auto sm:px-2 max-w-screen-2xl'>
+    <div className='w-5/6 pt-20 mx-auto sm:px-2 max-w-[2200px]'>
       <Videos isLoading={isLoading} error={error} data={data} type='grid' />
     </div>
   );
