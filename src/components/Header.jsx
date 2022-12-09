@@ -18,6 +18,7 @@ export default function Header() {
   const handleSubmit = (e) => {
     e.preventDefault();
     navigate(`/result/${value}`);
+    setShow(false);
   };
 
   const handleChange = (e) => {
