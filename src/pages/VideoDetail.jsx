@@ -34,7 +34,6 @@ export default function VideoDetail() {
               type='text/html'
               src={`https://www.youtube.com/embed/${data.id}?autoplay=1&mute=0`}
               title='youtube video player'
-              frameBorder='0'
               allowFullScreen
               allow='autoplay'
             ></iframe>

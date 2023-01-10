@@ -9,6 +9,7 @@ module.exports = {
         search: '#f8f8f8',
         lightGray: '#e2e2e2',
         darkModeGray: '#ffffff14',
+        darkModeLightGray: '#6b6b6ba4',
         tag: '#3ea6ff',
         bgBlack: '#0f0f0f',
       },
