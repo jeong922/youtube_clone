@@ -4,7 +4,7 @@ import { useYoutubeApi } from '../context/YoutubeApiContext';
 import { formatAgo } from '../util/date';
 import { useNavigate } from 'react-router-dom';
 
-export default function RelatedVideo({ id }) {
+export default function RelatedVideo({ id, isMore }) {
   const navigate = useNavigate();
   const { youtube } = useYoutubeApi();
   const { data } = useQuery(
@@ -22,9 +22,10 @@ export default function RelatedVideo({ id }) {
           {data &&
             data.map((video) => (
               <div
-                onClick={() =>
-                  navigate(`/watch?v=${video.id}`, { state: video })
-                }
+                onClick={() => {
+                  navigate(`/watch?v=${video.id}`, { state: video });
+                  isMore(false);
+                }}
                 className='flex h-24 mb-2 cursor-pointer'
                 key={video.id}
               >

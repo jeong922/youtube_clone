@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import ChannelInfo from '../components/ChannelInfo';
 import RelatedVideo from '../components/RelatedVideo';
@@ -17,6 +17,11 @@ export default function VideoDetail() {
     () => youtube.detail(id),
     { staleTime: 1000 * 60 * 1 }
   );
+  const [isMore, setIsMore] = useState(false);
+
+  const onClick = () => {
+    isMore ? setIsMore(false) : setIsMore(true);
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -37,6 +42,7 @@ export default function VideoDetail() {
               allowFullScreen
               allow='autoplay'
             ></iframe>
+
             <div className='mt-3'>
               <div>
                 {data.snippet.tags &&
@@ -60,22 +66,51 @@ export default function VideoDetail() {
                   {data.snippet.channelTitle}
                 </span>
               </div>
-              <div className='p-3 rounded-lg bg-lightGray dark:bg-darkModeGray'>
-                <span className='font-semibold'>
-                  {data.snippet.publishedAt.slice(0, 10).replaceAll('-', '.')}
-                </span>
-                <pre className='text-sm break-all whitespace-pre-wrap'>
-                  {data.snippet.description}
-                </pre>
-              </div>
+
+              <section>
+                {!isMore ? (
+                  <div
+                    className='p-3 rounded-lg cursor-pointer bg-lightGray dark:bg-darkModeGray hover:opacity-80'
+                    onClick={onClick}
+                  >
+                    <span className='font-semibold'>
+                      {data.snippet.publishedAt
+                        .slice(0, 10)
+                        .replaceAll('-', '.')}
+                    </span>
+                    <pre className='mb-3 text-sm break-all whitespace-pre-wrap line-clamp-2 '>
+                      {data.snippet.description}
+                    </pre>
+                    <span className='text-sm'>더보기...</span>
+                  </div>
+                ) : (
+                  <div className='p-3 rounded-lg bg-lightGray dark:bg-darkModeGray'>
+                    <span className='font-semibold'>
+                      {data.snippet.publishedAt
+                        .slice(0, 10)
+                        .replaceAll('-', '.')}
+                    </span>
+                    <pre className='text-sm break-all whitespace-pre-wrap'>
+                      {data.snippet.description}
+                    </pre>
+                    <button
+                      className='mt-5 text-sm hover:opacity-80'
+                      onClick={onClick}
+                    >
+                      간략히
+                    </button>
+                  </div>
+                )}
+              </section>
             </div>
+
             <div className='mt-4'>
               <Comment id={id} />
             </div>
           </section>
 
           <section className='md:w-full lg:w-2/5'>
-            <RelatedVideo id={data.id} />
+            <RelatedVideo id={data.id} isMore={setIsMore} />
           </section>
         </div>
       )}
