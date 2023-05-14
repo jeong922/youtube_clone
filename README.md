@@ -49,7 +49,7 @@ React 18, React Router, React Query , Tailwind, YouTube Data API, Axios 등 사�
 
 ### - 비디오 상세페이지
 
-- 유튜브 영상, 영상의 비디오id와 관련된 영상, 비디오 상세정보, 댓글을 구현하였다.
+- 유튜브 영상, 영상의 channelTitle과 관련된 영상, 비디오 상세정보, 댓글을 구현하였다.
   <p align="center">
   <img src="./public/img/상세페이지구성.gif" height="250" />
   </p>
@@ -62,4 +62,5 @@ React 18, React Router, React Query , Tailwind, YouTube Data API, Axios 등 사�
 
 - [ ] 최적화 및 코드 정리
 - [ ] Infinite Queries로 스크롤이 일정 위치로 가면 유튜브 데이터를 더 불러오게 구현
+- [x] relatedToVideoId 매개변수 지원 종료로 인해 비디오 상세페이지 관련 영상을 channelTitle 관련 영상으로 변경
 - [x] NotFound 화면 수정

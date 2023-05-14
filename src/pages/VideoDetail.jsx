@@ -110,7 +110,11 @@ export default function VideoDetail() {
           </section>
 
           <section className='md:w-full lg:w-2/5'>
-            <RelatedVideo id={data.id} isMore={setIsMore} />
+            <RelatedVideo
+              id={data.id}
+              channelTitle={data.snippet.channelTitle}
+              isMore={setIsMore}
+            />
           </section>
         </div>
       )}

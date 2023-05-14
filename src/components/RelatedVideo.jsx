@@ -1,16 +1,18 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useYoutubeApi } from '../context/YoutubeApiContext';
-import { formatAgo } from '../util/date';
+import { formatAgo, replaceString } from '../util/date';
 import { useNavigate } from 'react-router-dom';
 
-export default function RelatedVideo({ id, isMore }) {
+export default function RelatedVideo({ id, channelTitle, isMore }) {
   const navigate = useNavigate();
   const { youtube } = useYoutubeApi();
   const { data } = useQuery(
-    ['relatedVideo', id],
-    () => youtube.relatedVideo(id),
-    { staleTime: 1000 * 60 * 1 }
+    ['search', channelTitle],
+    () => youtube.search(channelTitle),
+    {
+      staleTime: 1000 * 60 * 1,
+    }
   );
   return (
     <>
@@ -26,7 +28,9 @@ export default function RelatedVideo({ id, isMore }) {
                   navigate(`/watch?v=${video.id}`, { state: video });
                   isMore(false);
                 }}
-                className='flex h-24 mb-2 cursor-pointer'
+                className={`flex h-24 mb-2 cursor-pointer p-1 rounded-md ${
+                  video.id === id && 'bg-darkModeGray'
+                }`}
                 key={video.id}
               >
                 <img
@@ -36,7 +40,7 @@ export default function RelatedVideo({ id, isMore }) {
                 />
                 <div className='flex flex-col'>
                   <h3 className='mb-1 text-sm font-semibold break-all line-clamp-2'>
-                    {video.snippet.title}
+                    {replaceString(video.snippet.title)}
                   </h3>
                   <span className='text-xs opacity-80'>
                     {video.snippet.channelTitle}

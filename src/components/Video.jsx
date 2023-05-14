@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { formatAgo, replaceString } from '../util/date';
 import ChannelInfo from './ChannelInfo';
 import { useNavigate } from 'react-router-dom';
@@ -24,7 +24,7 @@ export default function Video({ video, type }) {
           className={`${
             type === 'list'
               ? 'flex flex-col sm:flex-col md:flex-row'
-              : 'px-2 pt-2 cursor-pointer hover:scale-110 duration-300 ease-in-out transform hover:z-20 hover:shadow-lg rounded-xl  dark:hover:bg-darkModeGray'
+              : 'px-2 pt-2 cursor-pointer duration-300 ease-in-out transform hover:z-20 hover:shadow-lg rounded-xl dark:hover:bg-darkModeGray'
           } cursor-pointer relative`}
           onClick={onClick}
         >
