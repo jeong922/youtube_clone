@@ -29,7 +29,7 @@ export default function RelatedVideo({ id, channelTitle, isMore }) {
                   isMore(false);
                 }}
                 className={`flex h-24 mb-2 cursor-pointer p-1 rounded-md ${
-                  video.id === id && 'bg-darkModeGray'
+                  video.id === id && 'dark:bg-darkModeGray bg-lightGray'
                 }`}
                 key={video.id}
               >
