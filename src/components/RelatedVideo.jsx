@@ -14,6 +14,7 @@ export default function RelatedVideo({ id, channelTitle, isMore }) {
       staleTime: 1000 * 60 * 1,
     }
   );
+
   return (
     <>
       {data && (
@@ -22,7 +23,10 @@ export default function RelatedVideo({ id, channelTitle, isMore }) {
             관련된 콘텐츠
           </h2>
           {data &&
-            data.map((video) => (
+            [
+              ...data.filter((v) => v.id === id),
+              ...data.filter((v) => v.id !== id),
+            ].map((video) => (
               <div
                 onClick={() => {
                   navigate(`/watch?v=${video.id}`, { state: video });
