@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import ChannelInfo from '../components/ChannelInfo';
 import RelatedVideo from '../components/RelatedVideo';
+import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { useYoutubeApi } from '../context/YoutubeApiContext';
 import Loading from '../components/Loading';
@@ -10,6 +11,7 @@ import Comment from '../components/Comment';
 
 export default function VideoDetail() {
   const location = useLocation();
+  const navigate = useNavigate();
   const id = new URLSearchParams(location.search).get('v');
   const { youtube } = useYoutubeApi();
   const { isLoading, error, data } = useQuery(
@@ -50,9 +52,10 @@ export default function VideoDetail() {
                     .slice(0, 6)
                     .map((tag) => (
                       <span
-                        className='text-sm text-tag'
+                        className='text-sm cursor-pointer text-tag'
                         key={tag}
-                      >{`#${tag}`}</span>
+                        onClick={() => navigate(`/result/${tag}`)}
+                      >{` #${tag}`}</span>
                     ))}
               </div>
               <h2 className='mb-3 text-xl font-semibold break-all'>
