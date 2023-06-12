@@ -89,13 +89,13 @@ export default function Header() {
             onSubmit={handleSubmit}
           >
             <input
-              className='w-7/12 max-w-md p-2 pl-3 text-gray-600 bg-transparent border border-r-0 border-gray-400 border-solid outline-none rounded-l-3xl dark:text-white '
+              className='w-7/12 max-w-md p-2 pl-3 text-gray-600 bg-transparent border border-r-0 border-gray-400 border-solid outline-none dark:border-gray-500 rounded-l-3xl dark:text-white '
               type='text'
               placeholder='검색'
               value={value}
               onChange={handleChange}
             />
-            <button className='flex items-center justify-center w-16 border border-gray-400 border-solid dark:hover:bg-darkModeLightGray dark:bg-darkModeGray bg-search rounded-r-3xl hover:bg-lightGray'>
+            <button className='flex items-center justify-center w-16 border border-gray-400 border-solid dark:border-gray-500 dark:hover:bg-darkModeLightGray/40 dark:bg-darkModeGray bg-search rounded-r-3xl hover:bg-lightGray'>
               <AiOutlineSearch className='text-2xl text-zinc-600 dark:text-zinc-400' />
             </button>
           </form>
