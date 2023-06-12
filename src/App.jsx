@@ -23,7 +23,7 @@ function App() {
                   <Outlet />
                 </QueryClientProvider>
               </YoutubeApiProvider>
-              <ModeButton />
+              {/* <ModeButton /> */}
             </div>
           </SidebarProvider>
         </div>

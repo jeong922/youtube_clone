@@ -7,7 +7,7 @@ export default function ModeButton() {
   return (
     <button
       onClick={toggleDarkMode}
-      className='fixed flex items-center justify-center text-xl text-yellow-500 duration-300 ease-in-out transform rounded-full right-8 w-11 h-11 bottom-8 hover:scale-125'
+      className='flex items-center justify-center ml-4 text-xl text-yellow-500 rounded-full '
     >
       {darkMode ? <BsFillMoonFill /> : <BsFillSunFill />}
     </button>

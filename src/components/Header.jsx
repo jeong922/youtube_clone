@@ -8,6 +8,7 @@ import {
 import { Link, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useSidebar } from '../context/SidebarContext';
+import ModeButton from './ModeButton';
 
 export default function Header() {
   const { keyword } = useParams();
@@ -100,17 +101,17 @@ export default function Header() {
           </form>
         </div>
 
-        <div className='flex justify-end w-[130px]'>
+        <div className='flex justify-end w-[130px] items-center'>
           <button
             onClick={() => setShow(true)}
             className='flex items-center justify-center w-8 h-8 rounded-full sm:hidden hover:bg-lightGray dark:hover:bg-darkModeGray'
           >
             <AiOutlineSearch className='text-2xl text-zinc-600 dark:text-zinc-400' />
           </button>
-
+          <ModeButton />
           <img
             src='https://avatars.githubusercontent.com/u/93126884?v=4'
-            className='w-8 h-8 mx-3 rounded-full cursor-pointer'
+            className='w-8 h-8 mx-4 rounded-full cursor-pointer'
             alt='아바타 이미지'
             onClick={() =>
               window.open('https://github.com/jeong922/youtube_clone', '_blank')
