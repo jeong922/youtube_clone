@@ -16,7 +16,6 @@ export default function Video({ video, type }) {
   const onClick = () => {
     navigate(`/watch?v=${video.id}`);
   };
-
   return (
     <>
       {video && (

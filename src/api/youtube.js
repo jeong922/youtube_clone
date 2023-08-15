@@ -3,26 +3,31 @@ export default class Youtube {
     this.apiClient = apiClient;
   }
 
-  async mostPopular() {
+  async mostPopular({ pageParam }) {
     const response = await this.apiClient.mostPopular({
       params: {
         part: 'snippet',
         chart: 'mostPopular',
         maxResults: 25,
         regionCode: 'kr',
+        pageToken: pageParam && pageParam,
       },
     });
-    return response.data.items;
+    return response.data;
   }
 
-  async search(keyword) {
+  async search({ keyword, pageParam }) {
     const response = await this.apiClient.search({
-      params: { part: 'snippet', maxResults: 25, type: 'video', q: keyword },
+      params: {
+        part: 'snippet',
+        maxResults: 25,
+        type: 'video',
+        q: keyword,
+        regionCode: 'kr',
+        pageToken: pageParam && pageParam,
+      },
     });
-    return response.data.items.map((item) => ({
-      ...item,
-      id: item.id.videoId,
-    }));
+    return response.data;
   }
 
   async channelInfo(channelId) {
@@ -43,13 +48,14 @@ export default class Youtube {
     return response.data.items[0];
   }
 
-  async relatedVideo(videoId) {
-    const response = await this.apiClient.relatedVideo({
+  async relatedVideo(keyword) {
+    const response = await this.apiClient.search({
       params: {
         part: 'snippet',
         maxResults: 25,
-        relatedToVideoId: videoId,
         type: 'video',
+        q: keyword,
+        regionCode: 'kr',
       },
     });
     return response.data.items.map((item) => ({

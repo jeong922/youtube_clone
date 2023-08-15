@@ -4,7 +4,6 @@ import Header from './components/Header';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { YoutubeApiProvider } from './context/YoutubeApiContext';
 import { DarkModeProvider } from './context/DarkModeContext';
-import ModeButton from './components/ModeButton';
 import { SidebarProvider } from './context/SidebarContext';
 import Sidebar from './components/SideNav';
 const queryClient = new QueryClient();
@@ -23,7 +22,6 @@ function App() {
                   <Outlet />
                 </QueryClientProvider>
               </YoutubeApiProvider>
-              {/* <ModeButton /> */}
             </div>
           </SidebarProvider>
         </div>

@@ -8,8 +8,8 @@ export default function RelatedVideo({ id, channelTitle, isMore }) {
   const navigate = useNavigate();
   const { youtube } = useYoutubeApi();
   const { data } = useQuery(
-    ['search', channelTitle],
-    () => youtube.search(channelTitle),
+    ['relatedVideo', channelTitle],
+    () => youtube.relatedVideo(channelTitle),
     {
       staleTime: 1000 * 60 * 1,
     }
