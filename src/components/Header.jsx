@@ -47,7 +47,7 @@ export default function Header() {
 
   return (
     <>
-      <header className='fixed z-10 flex items-center justify-between w-full p-4 text-black bg-white dark:bg-bgBlack dark:text-white h-[4.5rem]'>
+      <header className='fixed z-20 flex items-center justify-between w-full p-4 text-black bg-white dark:bg-bgBlack dark:text-white h-[4.5rem]'>
         <div className='flex'>
           <button
             onClick={toggleShowSidebar}
