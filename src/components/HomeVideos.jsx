@@ -2,24 +2,26 @@ import React, { useEffect, useRef } from 'react';
 import Videos from '../components/Videos';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { useYoutubeApi } from '../context/YoutubeApiContext';
+import { ClipLoader } from 'react-spinners';
 
 export default function HomeVideos() {
   const { youtube } = useYoutubeApi();
   const pageEnd = useRef(null);
 
-  const { data, error, status, fetchNextPage } = useInfiniteQuery(
-    ['videos'],
-    ({ pageParam }) => youtube.mostPopular({ pageParam }),
-    {
-      getNextPageParam: (lastPage, pages) => {
-        if (pages.length < 5) {
-          return lastPage.nextPageToken;
-        } else {
-          return undefined;
-        }
-      },
-    }
-  );
+  const { data, error, status, fetchNextPage, isFetchingNextPage } =
+    useInfiniteQuery(
+      ['videos'],
+      ({ pageParam }) => youtube.mostPopular({ pageParam }),
+      {
+        getNextPageParam: (lastPage, pages) => {
+          if (pages.length < 5) {
+            return lastPage.nextPageToken;
+          } else {
+            return undefined;
+          }
+        },
+      }
+    );
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -46,7 +48,9 @@ export default function HomeVideos() {
         data={data}
         type='grid'
       />
-      <div ref={pageEnd}></div>
+      <div className='mt-4 text-center' ref={pageEnd}>
+        {isFetchingNextPage && <ClipLoader color='#FF0000' />}
+      </div>
     </div>
   );
 }

@@ -30,8 +30,8 @@ export default function Video({ video, type }) {
           <img
             className={`${
               type === 'list' ? 'mr-3 mb-3' : 'w-full '
-            } rounded-xl`}
-            src={thumbnails.medium.url}
+            } rounded-xl bg-lightGray dark:bg-darkModeGray`}
+            src={thumbnails.medium.url || ''}
             alt={title}
             loading='lazy'
           />

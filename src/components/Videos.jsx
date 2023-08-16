@@ -2,11 +2,15 @@ import React from 'react';
 import Error from './Error';
 import Loading from './Loading';
 import Video from './Video';
+import SkeletonUIList from './SkeletonUIList';
 
 export default function Videos({ isLoading, error, data, type }) {
   return (
     <>
-      {isLoading && <Loading />}
+      {isLoading && type === 'list' && <Loading />}
+      {isLoading && type === 'grid' && (
+        <SkeletonUIList type={type} length={25} />
+      )}
       {error && <Error error={error} />}
       {data && (
         <ul
@@ -44,10 +48,6 @@ export default function Videos({ isLoading, error, data, type }) {
               ))}
             </>
           )}
-
-          {/* {data.map((video) => (
-            <Video key={video.id} video={video} type={type} />
-          ))} */}
         </ul>
       )}
     </>
