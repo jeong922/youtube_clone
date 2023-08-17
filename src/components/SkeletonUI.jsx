@@ -19,7 +19,8 @@ export default function SkeletonUI({ type }) {
             <div className='mr-2 rounded-full bg-lightGray dark:bg-darkModeGray w-9 h-9'></div>
             <div className='flex flex-col w-[87%]'>
               <div className='p-2 mb-2 bg-lightGray dark:bg-darkModeGray'></div>
-              <div className='p-2 w-[70%] bg-lightGray dark:bg-darkModeGray'></div>
+              <div className='p-2 w-[70%] bg-lightGray dark:bg-darkModeGray mb-2'></div>
+              <div className='p-2 w-[30%] bg-lightGray dark:bg-darkModeGray'></div>
             </div>
           </div>
         </div>

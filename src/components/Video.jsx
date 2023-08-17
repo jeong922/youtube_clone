@@ -30,7 +30,7 @@ export default function Video({ video, type }) {
           <img
             className={`${
               type === 'list' ? 'mr-3 mb-3' : 'w-full '
-            } rounded-xl bg-lightGray dark:bg-darkModeGray`}
+            } rounded-xl bg-lightGray dark:bg-darkModeGray aspect-video`}
             src={thumbnails.medium.url || ''}
             alt={title}
             loading='lazy'
@@ -39,7 +39,7 @@ export default function Video({ video, type }) {
           <div className='my-2'>
             {type !== 'list' ? (
               <div className='flex justify-between'>
-                <div className='mr-2 w-9 h-9'>
+                <div className='mr-2 w-9 h-9 shrink-0'>
                   {channelId && <ChannelInfo id={channelId} />}
                 </div>
                 <div className='flex flex-col w-[87%]'>

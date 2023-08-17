@@ -6,6 +6,7 @@ import { YoutubeApiProvider } from './context/YoutubeApiContext';
 import { DarkModeProvider } from './context/DarkModeContext';
 import { SidebarProvider } from './context/SidebarContext';
 import Sidebar from './components/SideNav';
+import SideMenu from './components/SideMenu';
 const queryClient = new QueryClient();
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
             <Header />
             <div className='flex'>
               <Sidebar />
+              <SideMenu />
               <YoutubeApiProvider>
                 <QueryClientProvider client={queryClient}>
                   <Outlet />

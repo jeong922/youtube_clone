@@ -41,7 +41,7 @@ export default function HomeVideos() {
   }, []);
 
   return (
-    <div className='pt-2 pb-6 lg:pl-36 sm:pl-7'>
+    <div className='pt-2 pb-6 '>
       <Videos
         isLoading={status === 'loading'}
         error={error}
