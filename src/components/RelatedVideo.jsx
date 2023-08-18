@@ -33,14 +33,14 @@ export default function RelatedVideo({ id, channelTitle, isMore }) {
               isMore(false);
             }}
             className={`flex h-24 mb-2 cursor-pointer p-1 rounded-md ${
-              video.id === id && 'dark:bg-darkModeGray bg-lightGray'
+              video.id === id && 'dark:bg-darkModeGray bg-lightGray/40'
             }`}
             key={video.id}
           >
             <img
-              className='mr-2 rounded-xl'
+              className='w-40 mr-2 shrink-0 rounded-xl bg-lightGray dark:bg-darkModeGray aspect-video'
               src={video.snippet.thumbnails.medium.url}
-              alt=''
+              alt={video.snippet.title}
             />
             <div className='flex flex-col'>
               <h3 className='mb-1 text-sm font-semibold break-all line-clamp-2'>
