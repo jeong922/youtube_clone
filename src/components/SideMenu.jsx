@@ -9,7 +9,7 @@ export default function SideMenu() {
     <>
       {location.pathname !== '/watch' && (
         <>
-          <section className='sticky top-[4.5rem] w-20 h-full bg-white dark:bg-bgBlack sm:block lg:w-56 scrollbar-thin hover:overflow-y-auto hidden'>
+          <section className='sticky top-[4.5rem] w-20 h-screen bg-white dark:bg-bgBlack sm:block lg:w-56 scrollbar-thin overflow-y-scroll hidden'>
             <ul className='flex flex-col p-2 text-lg'>
               <Link
                 to='/'
