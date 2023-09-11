@@ -57,7 +57,7 @@ React 18, React Router, React Query(TanStack Query), Tailwind, YouTube Data API,
 - 비디오 상세페이지
   - 유튜브 영상, 영상의 channelTitle과 관련된 영상, 비디오 상세정보, 댓글을 구현하였다.
     <p align="center">
-    <img src="./public/img/상세페이지구성.gif" height="250" />
+    <img src="./public/img/상세페이지.gif" height="250" />
     </p>
   - 화면의 크기 변화에 따라 반응형으로 구현하였으며 일정 크기 이상으로 화면이 작아지면 관련 비디오가 비디오 상세정보 아래로 내려가게 된다.
     <p align="center">
